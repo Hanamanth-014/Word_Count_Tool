@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Count Tool</title>
+    <link rel="stylesheet" href="hss1.css">
+    <style>
+        /* Add some styles for the Clear button */
+        button#clearButton {
+            background-color: #ff6666;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        /* Center the Count Words button and break it into a new line */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Add some space below the textarea */
+        #textInput {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Word Count Tool</h1>
+    <label for="textInput">Enter text:</label>
+    <textarea id="textInput" rows="5" cols="40"></textarea>
+    
+    <!-- Wrap the Count Words button in a div for centering and new line -->
+    <div class="button-container">
+        <button onclick="countWords()">Count Words</button> 
+    </div> <br>
+    
+    <!-- Add a Clear button -->
+    <button id="clearButton" onclick="clearText()">Clear</button>
+
+    <p>Word count: <span id="wordCount">0</span></p>
+   
+   <script>   
+        function countWords() {
+            const textInput = document.getElementById("textInput").value;
+            const wordCount = document.getElementById("wordCount");
+           
+            if (textInput.trim() === "") {
+                wordCount.textContent = "0";
+            } else {
+                const words = textInput.split(/\s+/);
+                wordCount.textContent = words.length;
+            }
+        }
+        
+        
+        function clearText() {
+            document.getElementById("textInput").value = "";
+            document.getElementById("wordCount").textContent = "0";
+        }
+    </script>
+</body>
+</html>
